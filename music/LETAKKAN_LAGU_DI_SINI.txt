@@ -1,0 +1,4 @@
+﻿Taruh file lagu di sini.
+Nama file harus: birthday-song.mp3
+
+Format yang didukung: .mp3, .ogg, .wav

@@ -1,0 +1,8 @@
+﻿Folder ini untuk menyimpan foto-fotomu.
+
+Cara penggunaan:
+1. Masukkan foto ke folder ini
+2. Ganti nama menjadi: photo1.jpg, photo2.jpg, photo3.jpg, dst.
+3. Edit data di js/data.js sesuai nama file foto
+
+Lihat README.md untuk panduan lengkap.

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A little universe, made just for you." />
+  <title>A Little Universe For You ✦</title>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+
+<body class="landing-active">
+
+  <!-- ── CUSTOM CURSOR ──────────────────────────────────────── -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ── PROGRESS BAR ───────────────────────────────────────── -->
+  <div id="progress-bar" role="progressbar" aria-label="Reading progress"></div>
+
+  <!-- ── STAR BACKGROUND ────────────────────────────────────── -->
+  <canvas id="star-canvas" aria-hidden="true"></canvas>
+
+  <!-- ── CONFETTI CANVAS ────────────────────────────────────── -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- ── PAGE OVERLAY (transition) ─────────────────────────── -->
+  <div id="page-overlay" aria-hidden="true"></div>
+
+  <!-- ════════════════════════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════════════════════════ -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <span class="nav-logo">
+      <span class="nav-logo-star" aria-hidden="true">✦</span>
+      A Little Universe
+    </span>
+    <ul class="nav-links" role="list">
+      <li><a href="#section-intro"     data-nav="intro">About You</a></li>
+      <li><a href="#section-memories"  data-nav="memories">Memories</a></li>
+      <li><a href="#section-story"     data-nav="story">Our Story</a></li>
+      <li><a href="#section-envelopes" data-nav="envelopes">Letters</a></li>
+      <li><a href="#section-wish"      data-nav="wish">Wish</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <a href="#section-intro">About You</a>
+    <a href="#section-memories">Memories</a>
+    <a href="#section-story">Our Story</a>
+    <a href="#section-envelopes">Letters</a>
+    <a href="#section-wish">Wish</a>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       SECTION 1 — LANDING
+  ════════════════════════════════════════════════════════ -->
+  <section id="landing" aria-label="Welcome">
+
+    <!-- Moon -->
+    <div class="moon" aria-hidden="true">
+      <div class="moon-shadow"></div>
+      <div class="moon-circle"></div>
+    </div>
+    <div class="moon-glow" aria-hidden="true"></div>
+
+    <div class="landing-inner">
+      <span class="landing-eyebrow">A little universe for you</span>
+      <h1 class="landing-title">
+        Hey,<br>
+        <span class="italic">Birthday Boy.</span>
+      </h1>
+      <p class="landing-subtitle">
+        I made a little something just for you —<br>
+        a small universe filled with memories, wishes,<br>
+        and everything I wish I could tell you.
+      </p>
+      <button class="btn-enter" id="btn-enter" aria-label="Enter the website">
+        <span>Enter Your Universe</span>
+        <span class="btn-enter-arrow" aria-hidden="true">→</span>
+      </button>
+    </div>
+
+    <div class="landing-scroll-hint" aria-hidden="true">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MAIN SITE (hidden until enter clicked)
+  ════════════════════════════════════════════════════════ -->
+  <main id="main-site" style="display:none">
+
+    <!-- ── SECTION 2 — INTRODUCTION ─────────────────────────── -->
+    <section id="section-intro" class="site-section" aria-label="Introduction">
+      <div class="section-inner" style="text-align:center; max-width:700px; margin:0 auto;">
+
+        <div class="intro-badge reveal">
+          <span class="intro-badge-icon" aria-hidden="true">✦</span>
+          <span id="intro-birthday-label">Happy Birthday</span>
+        </div>
+
+        <h2 class="section-title reveal" style="text-align:center;">Today Is All<br><span class="italic">About You.</span></h2>
+
+        <!-- Age display -->
+        <div class="intro-age-display reveal reveal-delay-1">
+          <div class="intro-age-num" id="age-num-display">
+            <span id="age-num-value">0</span>
+            <div class="age-filled" aria-hidden="true" id="age-num-filled">0</div>
+          </div>
+          <div class="intro-age-label" id="age-label">years around the sun</div>
+        </div>
+
+        <p class="intro-message reveal reveal-delay-2" id="intro-message-text">
+          Out of all the days in the year, today is one of my favorites — because it's the day you came into this world.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── SECTION 3 — LITTLE THINGS ────────────────────────── -->
+    <section id="section-reasons" class="site-section" aria-label="Little things I love about you">
+      <div class="section-inner">
+        <div class="reveal">
+          <p class="section-label">Little Things That Make You Special</p>
+          <h2 class="section-title">What I <span class="italic">Love</span> About You</h2>
+          <div class="section-divider"></div>
+          <p style="font-size:.8rem;color:var(--dusty-blue);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:40px;">
+            Tap each card to reveal
+          </p>
+        </div>
+        <div class="reasons-grid reveal reveal-delay-1" id="reasons-grid" role="list"></div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 4 — MEMORIES ─────────────────────────────── -->
+    <section id="section-memories" class="site-section" aria-label="Our memories">
+      <div class="section-inner">
+        <div class="gallery-intro reveal">
+          <p class="section-label">Little Moments, Big Memories</p>
+          <h2 class="section-title">Our <span class="italic">Little</span><br>Memories</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="polaroid-grid" id="gallery-grid" role="list" aria-label="Photo gallery"></div>
+      </div>
+    </section>
+
+    <!-- ── LIGHTBOX ──────────────────────────────────────────── -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <div class="lb-container">
+        <div class="lb-polaroid">
+          <div class="lb-polaroid-placeholder" id="lb-placeholder" aria-hidden="true">✦</div>
+          <img id="lb-img" src="" alt="" style="display:none;" />
+          <div class="lb-polaroid-caption" id="lb-caption"></div>
+          <div class="lb-polaroid-date"    id="lb-date"></div>
+        </div>
+        <div class="lb-info-panel">
+          <div>
+            <div class="lb-counter" id="lb-counter">01 / 08</div>
+            <p style="font-size:.72rem;color:var(--dusty-blue);letter-spacing:1px;text-transform:uppercase;margin-top:12px;">
+              A moment in time
+            </p>
+          </div>
+          <div class="lb-nav">
+            <button class="lb-nav-btn" id="lb-prev">← Prev</button>
+            <button class="lb-nav-btn" id="lb-next">Next →</button>
+          </div>
+        </div>
+        <button class="lb-close" id="lb-close" aria-label="Close photo viewer">✕</button>
+      </div>
+    </div>
+
+    <!-- ── SECTION 5 — OUR STORY ────────────────────────────── -->
+    <section id="section-story" class="site-section" aria-label="Our story">
+      <div class="section-inner">
+        <div class="reveal">
+          <p class="section-label">Every Chapter Has You</p>
+          <h2 class="section-title">Our <span class="italic">Story</span></h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="timeline-wrap" id="timeline" role="list"></div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 6 — OPEN WHEN ENVELOPES ──────────────────── -->
+    <section id="section-envelopes" class="site-section" aria-label="Open when letters">
+      <div class="section-inner">
+        <div class="reveal">
+          <p class="section-label">A Few Little Reminders</p>
+          <h2 class="section-title"><span class="italic">Open When</span><br>You Need It</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="envelopes-grid reveal reveal-delay-1" id="envelopes-grid" role="list"></div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 7 — BIRTHDAY LETTER ──────────────────────── -->
+    <section id="section-letter" class="site-section" aria-label="Birthday letter">
+      <div class="section-inner">
+        <div class="letter-layout">
+          <div class="reveal">
+            <p class="section-label">Something I Want You to Know</p>
+            <h2 class="section-title">A Letter From<br><span class="italic">My Heart</span></h2>
+            <div class="section-divider"></div>
+          </div>
+
+          <!-- Envelope -->
+          <div class="letter-envelope-wrap reveal reveal-delay-1">
+            <div class="letter-env" id="letter-env" role="button" tabindex="0" aria-label="Open birthday letter">
+              <div class="letter-env-body"></div>
+              <div class="letter-env-flap"></div>
+              <div class="letter-env-bottom"></div>
+              <div class="wax-seal" aria-hidden="true">✦</div>
+            </div>
+            <button class="btn-open-letter" id="btn-open-letter">
+              <span>Open My Letter</span>
+              <span aria-hidden="true">↓</span>
+            </button>
+          </div>
+
+          <!-- Letter paper (hidden until opened) -->
+          <div class="letter-paper" id="letter-paper">
+            <span class="letter-salutation" id="letter-salutation"></span>
+            <div class="letter-body" id="letter-body"></div>
+            <span class="letter-closing" id="letter-closing"></span>
+            <span class="letter-sig"     id="letter-sig"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 8 — MAKE A WISH ───────────────────────────── -->
+    <section id="section-wish" class="site-section" aria-label="Make a wish">
+      <div class="section-inner">
+        <div class="wish-inner">
+          <p class="wish-instruction reveal">Close your eyes, make a wish, and tap the star.</p>
+
+          <div class="wish-star-wrap reveal reveal-delay-1">
+            <div class="wish-star-glow" id="wish-glow" aria-hidden="true"></div>
+            <button
+              class="wish-star"
+              id="wish-star"
+              aria-label="Tap to make a wish"
+              aria-pressed="false">✦</button>
+          </div>
+
+          <div class="wish-reveal" id="wish-reveal" aria-live="polite">
+            <p class="wish-message" id="wish-message"></p>
+            <p class="wish-final-line">
+              Happy Birthday,<br>
+              <em id="wish-name"></em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      Made with love &nbsp;·&nbsp; A little universe, just for you &nbsp;✦
+    </footer>
+
+  </main><!-- /#main-site -->
+
+
+
+  <!-- ── BACK TO TOP ────────────────────────────────────────── -->
+  <button id="back-top" aria-label="Back to top" title="Back to top">↑</button>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
